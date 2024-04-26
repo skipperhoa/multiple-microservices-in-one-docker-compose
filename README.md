@@ -1,5 +1,5 @@
-# multiple-microservices-in-one-docker-container
-Multiple microservices in one docker container
+# multiple-microservices-in-one-docker-compose
+Multiple microservices in one docker compose
 
 # Microserive
 Please Like, Share, and Subscribe if you like the video : [Creator's Channel](https://www.youtube.com/channel/UCBOZRctXJSg9YNLyddedASg?sub_confirmation=1)
