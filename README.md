@@ -1,10 +1,10 @@
 # multiple-microservices-in-one-docker-compose
 Multiple microservices in one docker compose
 
-# Microserive
+# Microservice
 Please Like, Share, and Subscribe if you like the video : [Creator's Channel](https://www.youtube.com/channel/UCBOZRctXJSg9YNLyddedASg?sub_confirmation=1)
 
-- YouTube Playlist: [Microserive](https://www.youtube.com/watch?v=87IO77xU91Q&list=PLeoClvLfcvYqt2DMeomix7D_DGnL0ARsk&index=7)
+- YouTube Playlist: [Microserive](https://www.youtube.com/watch?v=87IO77xU91Q&list=PLeoClvLfcvYqt2DMeomix7D_DGnL0ARsk&index=7](https://www.youtube.com/watch?v=0WaQR1Ci5aY&list=PLeoClvLfcvYoOXAJ-YBq-i9PqD6GXzA1s&index=2&t=0s)
 
 Nếu bạn thấy thú vị, thì đăng ký kênh ủng hộ tôi (If you find it interesting, then subscribe to my channel to support me)
 - YouTube Channel: [Creator's Channel](https://www.youtube.com/channel/UCBOZRctXJSg9YNLyddedASg?sub_confirmation=1)
