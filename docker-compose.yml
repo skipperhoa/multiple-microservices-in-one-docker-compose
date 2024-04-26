@@ -1,0 +1,134 @@
+version: '3.8'
+
+services:
+ # service1:
+  service1:
+    build:
+      context: ./service1
+      dockerfile: Dockerfile.php7
+    volumes:
+      - ./service1:/var/www/html/service1
+    networks:
+      - networks_app_service1
+      - web
+  
+  mysql_service1:
+    image: mysql:8.0
+    container_name: mysql_service1
+    restart: unless-stopped
+    environment:
+        MYSQL_DATABASE: db_service1
+        MYSQL_ROOT_PASSWORD: 12345678
+        MYSQL_PASSWORD: 12345678
+        MYSQL_USER: hoacode_service1
+        SERVICE_TAGS: dev
+        SERVICE_NAME: mysql
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./service1/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - networks_app_service1
+
+  nginx_service1:
+    build:
+      context: ./service1/nginx
+      dockerfile: Dockerfile
+    volumes:
+      - ./service1/nginx:/etc/nginx/conf.d/
+      - ./service1:/var/www/html/service1
+    ports:
+      - "8000:80"
+    networks:
+      - networks_app_service1
+      - web
+ 
+ # service2:
+  service2:
+    build:
+      context: ./service2
+      dockerfile: Dockerfile
+    volumes:
+      - ./service2:/var/www/html/service2
+    networks:
+      - networks_app_service2
+      - web
+
+  mysql_service2:
+    image: mysql:8.0
+    container_name: mysql_service2
+    restart: unless-stopped
+    environment:
+        MYSQL_DATABASE: db_service2
+        MYSQL_ROOT_PASSWORD: 12345678
+        MYSQL_PASSWORD: 12345678
+        MYSQL_USER: hoacode_service2
+        SERVICE_TAGS: dev
+        SERVICE_NAME: mysql
+    ports:
+      - '3307:3306'
+    volumes:
+      - ./service1/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - networks_app_service2
+
+  nginx_service2:
+    build:
+      context: ./service2/nginx
+      dockerfile: Dockerfile
+    volumes:
+      - ./service2/nginx:/etc/nginx/conf.d/
+      - ./service2:/var/www/html/service2
+    ports:
+      - "8001:80"
+    networks:
+      - networks_app_service2
+      - web
+
+ # service3:
+  service3:
+    build:
+      context: ./service3
+      dockerfile: Dockerfile
+    volumes:
+      - ./service3/laravel-11:/var/www/html/service3
+    networks:
+      - networks_app_service3
+      - web
+
+  mysql_service3:
+    build:
+      context: ./service3/mysql
+      dockerfile: Dockerfile.mysql
+    container_name: mysql_service3
+    volumes:
+      - ./service3/mysql:/docker-entrypoint-initdb.d
+    ports:
+      - "3308:3306"
+    networks:
+      - networks_app_service3
+
+  nginx_service3:
+    build:
+      context: ./service3/nginx
+      dockerfile: Dockerfile.nginx
+    volumes:
+      - ./service3/nginx:/etc/nginx/conf.d/
+      - ./service3/laravel-11:/var/www/html/service3
+    ports:
+      - "8003:80"
+    networks:
+      - networks_app_service3
+      - web
+
+
+networks:
+  networks_app_service1:
+    driver: bridge
+  networks_app_service2:
+    driver: bridge
+  networks_app_service3:
+    driver: bridge
+  web:
+    external: true
+

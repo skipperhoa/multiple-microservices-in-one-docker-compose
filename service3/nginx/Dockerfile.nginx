@@ -1,0 +1,4 @@
+FROM nginx:alpine
+
+COPY service3.conf /etc/nginx/conf.d/
+
